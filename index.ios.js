@@ -3,6 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
+import axios from 'axios';
 import {Scene, Router, Actions } from 'react-native-router-flux';
 // import StatusModal from './components/StatusModal'
 import React, { Component } from 'react';
@@ -33,7 +34,14 @@ export default class AwesomeProject2 extends Component {
 
 class Login extends Component {
   render(){
-    const gotoStats = () => Actions.statsPage({logininfo: 'blah blah login info'});
+    const gotoStats = () => {
+      axios.get('http://localhost:3000/api/users/blah')
+       .then(res => {
+         dispatch(setUser(res.data));
+       })
+      return Actions.statsPage({logininfo: 'blah blah login info'});
+    }
+
 
     return (
       // <View style={{margin: 128}}>
