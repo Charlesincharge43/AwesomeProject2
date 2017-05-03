@@ -35,9 +35,10 @@ export default class AwesomeProject2 extends Component {
 class Login extends Component {
   render(){
     const gotoStats = () => {
-      axios.get('http://localhost:3000/api/users/blah')
+      axios.get('http://localhost:3000/api/users/')
        .then(res => {
-         dispatch(setUser(res.data));
+         console.log(res);
+        //  dispatch(setUser(res.data));
        })
       return Actions.statsPage({logininfo: 'blah blah login info'});
     }

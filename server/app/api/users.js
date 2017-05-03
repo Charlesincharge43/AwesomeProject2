@@ -1,7 +1,8 @@
 'use strict'
 
-// const db = require('APP/db')     //implement once we hook up gabi's changes
-// const User = db.model('users')
+const dbIndex = require('../../db');
+// const db = require('../../db/db.js')
+const User = dbIndex.User;
 
 // const {mustBeLoggedIn, forbidden} = require('./auth.filters')  //have not implemented this yet (maybe much much later)
 
@@ -28,7 +29,20 @@ module.exports = require('express').Router()
           res.status(401).send('Not found!!!!');
         }
       })
-  });
+      .catch(next)
+  })
+  .post('/signup', function(req, res, next){
+    User.findOrCreate({where: {email: req.body.email, password: req.body.password}})
+      .then(userObj=>{
+        // if(userObj){
+          res.status(200).send(userObj);
+        // }
+        // else{
+        //   res.status(401).send('Not found!!!!');
+        // }
+      })
+      .catch(next)
+  })
   // .get('/fetchSession',(req,res,next)=>{
   //   res.json(req.session);
   // })

@@ -6,6 +6,8 @@ var chalk = require('chalk');
 
 // var store = require('./store').store;//Uncomment this when we decide to use sockets
 
+var dbIndex = require('./db');
+var db= dbIndex.db;
 var app = require('./app');
 
 // Serve our api - ./api also requires in ../db, which syncs with our database
@@ -24,7 +26,12 @@ var startServer = function () {
 
 };
 
-startServer();
+db.sync({force: true})
+.then(()=>{
+  console.log('db has synced');
+  startServer();
+})
+
 
 
 // implement the code below once you have database up
