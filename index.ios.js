@@ -25,8 +25,7 @@ export default class AwesomeProject2 extends Component {
           <Scene key="loginPage" component={Login} title="Login" initial={true} />
           <Scene key="statsPage" component={Stats} navBar={Navbar} title="Stats" />
           <Scene key="runPage" component={Run} navBar={Navbar} title="Run" />
-          <Scene key="routeSelectPage" component={RouteSelect} navBar={Navbar} title="Select Route" />
-          <Scene key="leaguesPage" component={League} navBar={Navbar} title="Leagues" />
+          <Scene key="leaguesPage" component={Leagues} navBar={Navbar} title="Leagues" />
           <Scene key="storyPage" component={Story} navBar={Navbar} title="Story" />
         </Scene>
       </Router>
@@ -99,7 +98,7 @@ class Run extends Component {
     const gotoRouteSelect = () => Actions.routeSelectPage({text: 'this goes to route select page!'});
 
     return (
-      <View style={}>
+      <View>
         <View>
           <Text onPress={gotoRouteSelect} style={styles.button}>Select a distance</Text>
 
