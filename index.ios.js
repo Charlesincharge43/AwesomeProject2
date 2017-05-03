@@ -13,6 +13,7 @@ import {
   View,
   TouchableOpacity,
   TextInput,
+  Image
 } from 'react-native';
 
 export default class AwesomeProject2 extends Component {
@@ -22,8 +23,9 @@ export default class AwesomeProject2 extends Component {
         <Scene key="root">
           <Scene key="loginPage" component={Login} title="Login" initial={true} />
           <Scene key="statsPage" component={Stats} navBar={Navbar} title="Stats" />
-          <Scene key="missionPage" component={Missions} navBar={Navbar} title="Missions" />
-          <Scene key="clanPage" component={Clan} navBar={Navbar} title="Clan" />
+          <Scene key="runPage" component={Run} navBar={Navbar} title="Run" />
+          <Scene key="routeSelectPage" component={RouteSelect} navBar={Navbar} title="Select Route" />
+          <Scene key="leaguesPage" component={League} navBar={Navbar} title="Leagues" />
           <Scene key="storyPage" component={Story} navBar={Navbar} title="Story" />
         </Scene>
       </Router>
@@ -56,15 +58,16 @@ class Navbar extends Component {
   render(){
 
     const gotoStats = () => Actions.statsPage({text: 'pass this to stats page!'});
-    const gotoMissions = () => Actions.missionPage({text: 'pass this thingy to missions!'});
-    const gotoClan = () => Actions.clanPage({text: 'pass all tis shiz to clan page!'});
+    const gotoRun = () => Actions.runPage({text: 'pass this thingy to missions!'});
+    const gotoLeagues = () => Actions.leaguesPage({text: 'pass all tis shiz to leagues page!'});
     const gotoStory = () => Actions.storyPage({text: 'blah blah blahh story page!'});
+
 
     return (
       <View style={styles.navigationBar}>
         <Text onPress={gotoStats} style={styles.navButton}>Stats</Text>
-        <Text onPress={gotoMissions} style={styles.navButton}>Missions</Text>
-        <Text onPress={gotoClan} style={styles.navButton}>Your Clan</Text>
+        <Text onPress={gotoRun} style={styles.navButton}>Run</Text>
+        <Text onPress={gotoLeagues} style={styles.navButton}>Your Leagues</Text>
         <Text onPress={gotoStory} style={styles.navButton}>Story</Text>
       </View>)
   }
@@ -81,17 +84,34 @@ class Stats extends Component {
   }
 }
 
-class Missions extends Component {
+class Run extends Component {
   render() {
+
+    const gotoRouteSelect = () => Actions.routeSelectPage({text: 'this goes to route select page!'});
+
     return (
-      <View style={{margin: 128}}>
-        <Text>Missions Page Placeholder</Text>
+      <View style={}>
+        <View>
+          <Text onPress={gotoRouteSelect} style={styles.button}>Select a distance</Text>
+
+        </View>
+        <View>
+          <Text onPress={gotoRouteSelect} style={styles.button}>Select a route</Text>
+        </View>
+        <View>
+          <Text onPress={gotoRouteSelect} style={styles.button}>Create a route</Text>
+        </View>
       </View>
     )
   }
 }
 
-class Clan extends Component {
+
+
+
+
+
+class Leagues extends Component {
   render() {
     return (
       <View style={{margin: 128}}>
@@ -117,7 +137,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'skyblue',
   },
   welcome: {
     fontSize: 20,
